@@ -34,3 +34,8 @@ clients/flash/**/.gradle
 **/.idea/*
 *.iml
 *~
+
+# DevSpaces
+.stversions
+.stignore
+.stfolder
