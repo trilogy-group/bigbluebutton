@@ -39,3 +39,4 @@ clients/flash/**/.gradle
 .stversions
 .stignore
 .stfolder
+devspaces/buildspec.yml

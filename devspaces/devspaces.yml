@@ -12,6 +12,23 @@ docker-file: Dockerfile
 docker-build-includes: |
   **/*
 
+ports:
+  - protocol: http
+    port-number: 80
+    description: Nginx port
+  - protocol: https
+    port-number: 443
+    description: HTTPS Nginx port
+  - protocol: tcp
+    port-number: 1935
+    description: RTMP port
+  - protocol: udp
+    port-number: 3478
+    description: STUN port
+  - protocol: tcp
+    port-number: 5066
+    description: RED5 port
+
 sync-ignore: |
   .git
   .data
