@@ -12,25 +12,29 @@ echo "Installation finished SDKMan and required packages"
 echo "Installing Apache Flex"
 mkdir -p ~/dev/tools && \
 cd ~/dev/tools && \
-wget https://archive.apache.org/dist/flex/4.13.0/binaries/apache-flex-sdk-4.13.0-bin.tar.gz && \
-tar xvfz apache-flex-sdk-4.13.0-bin.tar.gz && \
+wget https://archive.apache.org/dist/flex/4.13.0/binaries/apache-flex-sdk-4.13.0-bin.tar.gz -O flex.tar.gz && \
+tar xvfz flex.tar.gz && \
+mv apache-flex-sdk-4.13.0-bin flex && \
 wget --content-disposition https://github.com/swfobject/swfobject/archive/2.2.tar.gz && \
 tar xvfz swfobject-2.2.tar.gz && \
-cp -r swfobject-2.2/swfobject apache-flex-sdk-4.13.0-bin/templates/ && \
-cd apache-flex-sdk-4.13.0-bin/ && \
+cp -r swfobject-2.2/swfobject flex/templates/ && \
+cd flex/ && \
 mkdir -p in/ && \
 wget http://download.macromedia.com/pub/flex/sdk/builds/flex4.6/flex_sdk_4.6.0.23201B.zip -P in/ && \
 yes | ant -f frameworks/build.xml thirdparty-downloads && \
-find ~/dev/tools/apache-flex-sdk-4.13.0-bin -type d -exec chmod o+rx '{}' \; && \
-chmod 755 ~/dev/tools/apache-flex-sdk-4.13.0-bin/bin/* && \
-chmod -R +r ~/dev/tools/apache-flex-sdk-4.13.0-bin && \
-ln -s ~/dev/tools/apache-flex-sdk-4.13.0-bin ~/dev/tools/flex && \
-mkdir -p ~/dev/tools/apache-flex-sdk-4.13.0-bin/frameworks/libs/player/11.2 && \
-cd ~/dev/tools/apache-flex-sdk-4.13.0-bin/frameworks/libs/player/11.2 && \
+find ~/dev/tools/flex -type d -exec chmod o+rx '{}' \; && \
+chmod 755 ~/dev/tools/flex/bin/* && \
+chmod -R +r ~/dev/tools/flex && \
+ln -s ~/dev/tools/flex ~/dev/tools/flex && \
+mkdir -p ~/dev/tools/flex/frameworks/libs/player/11.2 && \
+cd ~/dev/tools/flex/frameworks/libs/player/11.2 && \
 wget http://fpdownload.macromedia.com/get/flashplayer/installers/archive/playerglobal/playerglobal11_2.swc && \
 mv -f playerglobal11_2.swc playerglobal.swc && \
-cd ~/dev/tools/apache-flex-sdk-4.13.0-bin && \
+cd ~/dev/tools/flex && \
 sed -i "s/11.1/11.2/g" frameworks/flex-config.xml && \
 sed -i "s/<swf-version>14<\/swf-version>/<swf-version>15<\/swf-version>/g" frameworks/flex-config.xml && \
-sed -i "s/{playerglobalHome}\/{targetPlayerMajorVersion}.{targetPlayerMinorVersion}/libs\/player\/11.2/g" frameworks/flex-config.xml
+sed -i "s/{playerglobalHome}\/{targetPlayerMajorVersion}.{targetPlayerMinorVersion}/libs\/player\/11.2/g" frameworks/flex-config.xml && \
+echo "Removing installers" && \
+rm -f ~/dev/tools/flex.tar.gz && \
+rm -f ~/dev/tools/swfobject-2.2.tar.gz && \
 echo "Installation finished Apache Flex"
