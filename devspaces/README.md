@@ -62,6 +62,10 @@ Please, follow these steps to create a new DevSpace and build the BigBlueButton 
 
                 devspaces unbind BigBlueButton
 
+1. Before build the project, we need to run the command below to configure the environment:
+
+        /opt/dev_setup.sh
+
 1. BigBlueButton has many subprojects. The details on how to build each module are described in [DEVELOPMENT.md](https://github.com/trilogy-group/bigbluebutton/blob/master/DEVELOPMENT.md). As an example, we will show how to build the `bigbluebutton-client` subproject. Thus, go to the `bigbluebutton-client` folder and, first, build the locales:
 
         cd /data/bigbluebutton-client
