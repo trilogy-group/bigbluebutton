@@ -16,6 +16,4 @@ location /client {
 	index index.html index.htm;
 }
 " | sudo tee /etc/bigbluebutton/nginx/client_dev && \
-sudo ln -f -s /etc/bigbluebutton/nginx/client_dev /etc/bigbluebutton/nginx/client.nginx && \
-/etc/init.d/nginx restart && \
-/etc/init.d/nginx status
+sudo ln -f -s /etc/bigbluebutton/nginx/client_dev /etc/bigbluebutton/nginx/client.nginx
